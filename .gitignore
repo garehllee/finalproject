@@ -1,1 +1,3 @@
 dataset/census/geojson-counties-fips.json
+__pycache__/
+.DS_Store

@@ -1,0 +1,50 @@
+Group[a] Members: Michele Hratko, Garrett Lee
+
+
+We are investigating the Yelp Open Dataset. The dataset includes nearly 7M reviews across over 150,000 businesses in 11 metropolitan areas. It also includes over 200,000 photos. We approach it at three levels, moving from the behavior of reviewing, to what reviews show us, to what we can infer about them.
+
+
+1. Why do people leave reviews? 
+
+
+The first question we came up with pertains to which factors correlate with the rate at which people leave reviews. To determine this, we may bring in census data to correct for population-related bias. Restaurants in high density areas may get more foot traffic and thus have more reviews. To prevent over-fitting popularity, we can map restaurants against populations, potential foot traffic, or competition from nearby restaurants. This would let us identify restaurants that have an unusually high or low number of reviews relative to where they are located. 
+
+
+2. What do review photos reveal? 
+
+
+Zooming in, we’re also interested in analyzing pictures people leave with reviews. Oftentimes, people make connections between visual factors and appetite and satisfaction. For example, people say that fast food restaurants use red and yellow because it makes customers feel hungry. We’re curious to find correlations between visual factors and reviews, such as hue, saturation, aesthetics, light, visual noise, and more. Example inquiries might be whether darker photos signal a more expensive restaurant or more saturated photos lead to more positive reviews. 
+
+
+3. How predictable are our preferences? 
+
+
+As far as predictive models go, we want to see if we can predict users’ restaurant preferences if they rate a series of restaurants. It’s also possible that we need other information, like what specifically they liked about a restaurant. We could build a model that takes a set of reviews and predicts what score that user would give another restaurant and test it against what score that user actually gave. A potentially simpler alternative prediction model would be determining if factors of the review can predict what score the restaurant will give. For example, does including a photo suggest a higher or lower rating, does longer text suggest a higher or lower rating, and can sentiment scores of the text predict the rating. 
+
+
+With the popularity of food tracking apps like Yelp to rate restaurants and leave reviews, and Beli to create ranked lists of restaurants, our project aims to extract meaningful trends and insights from this growing collection of data. People are drawn to documenting every meal or restaurant as social proof of experiencing it, but we don’t often think about what data we are creating in the process and what that data could reveal about ourselves.
+
+
+[a]The proposal should include the names of the members of your group and a short (1-2 pages) description of the data science problem you plan to address. You should clearly explain the main dataset that you will use. You should also think about at least one other data source that you might use to augment your data. This could be something like census data or location data. Remember that finding the right question(s) to ask is an important skill you are learning during this course so we put emphasis on it when we evaluate the final project. 
+Unless granted instructor permission, you should work in groups of 4 people. If you are looking for project partners, please use the Piazza discussion board. Once you have a team, sign up for a Canvas group (see below) and I will create your project repository via classroom50:
+
+
+Sketches and Data Analysis
+
+Data Processing:
+
+We downloaded Yelp’s dataset, and it’s split into 6 separate JSON files. The first JSON includes business data like name, address, city, state, number of reviews, average rating, and tags for restaurant types (ie Mexican). The second JSON includes review data like the user, rating, date, and review text contents. The third JSON is user data like name, number of reviews written, and number of friends on Yelp. The fourth JSON is business checkins, the fifth is tips that users are writing to businesses to provide suggestions, and the final JSON is photos with captions and tags. 
+
+All together, the datasets are too large to even upload to Github, so we need to start by pulling out a more manageable section of the data. 
+
+From there, there is data cleanup to do regarding missing data. Businesses are also tagged with random string IDs, perhaps to anonymize them, but this may make it more difficult to handle the data. 
+
+The first big step though is reducing the data and then figuring out which JSONs we want to focus on or combine before cleaning so we aren’t wasting our efforts across this giant dataset.  
+
+System Design 
+
+We have a few initial ideas for the system design, but we’re expecting to explore more as we dive deeper into the actual data. Our initial idea is to have a map with each of the eleven cities plotted with circles whose size encodes the proportion of reviews to population. That would allow us to see a general trend. Then, things can get much more specific as we zoom in, with the potential to encode additional information in the color of the background. 
+
+We were also interested in looking at how factors like color or lightness affect the polarity of reviews. We could perform a sentiment analysis of each review that has a photo and check for a trend. We could also make a box-and-whisker chart based on the star ratings. 
+
+Essentially the web page will start looking with a high level look at reviewing trends across populations before getting into details about what specific reviews can tell us. 

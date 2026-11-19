@@ -1,0 +1,5 @@
+streamlit>=1.50
+altair>=5
+pandas>=2
+# only needed to re-run prep_data.py
+shapely>=2
